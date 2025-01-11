@@ -1,10 +1,14 @@
 let userscore = 0;
 let compscore = 0;
+let drawscore = 0;
+let totalgamesplayed = 0;
 
 const  choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
 const userScorePara = document.querySelector("#user-score");
 const compScorePara = document.querySelector("#comp-score");
+const drawScorePara = document.querySelector("#draw-score");
+const totalGamesPlayedPara = document.querySelector("#total-game");
 
 const genCompChoice = () => {
     const options = ["rock" , "paper" , "scissors"];
@@ -27,6 +31,8 @@ const showWinner = (userWin, userChoice, compChoice) => {
 };
 
 const drawGame = () => {
+    drawscore++;
+    drawScorePara.innerText = drawscore;
     msg.innerText = "Game was Draw. Play again";
     msg.style.backgroundColor = "#03045e";
 };
@@ -56,6 +62,8 @@ const playGame = (userChoice) => {
 
 choices.forEach((choice) => {
     choice.addEventListener("click", () => {
+        totalgamesplayed++;
+        totalGamesPlayedPara.innerText = totalgamesplayed;
         const userChoice = choice.getAttribute("id");
         playGame(userChoice);
     });
